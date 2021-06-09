@@ -16,10 +16,23 @@ namespace ASPNET_MVC.Controllers
         {
             _repo = repo;
         }
-        public IActionResult Index()
+
+        //public IActionResult Index()
+        //{
+        //    var products = _repo.GetAllProducts();
+        //    return View(products);
+        //}
+
+        public IActionResult Index(string searchString)
         {
             var products = _repo.GetAllProducts();
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.Name.StartsWith(searchString));
+            }
+
             return View(products);
+
         }
 
         public IActionResult ViewProduct(int id)

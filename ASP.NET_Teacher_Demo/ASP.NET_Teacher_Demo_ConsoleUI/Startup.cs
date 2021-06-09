@@ -27,7 +27,7 @@ namespace ASP.NET_Teacher_Demo_ConsoleUI
         {
             services.AddScoped<IDbConnection>((s) =>
             {
-                IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("azure"));
+                IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("bestbuy"));
                 conn.Open();
                 return conn;
             });
